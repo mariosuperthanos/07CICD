@@ -37,7 +37,8 @@ jobs:
         id: run-tests
         run: npm run test
       - name: Upload test report
-        if: steps.run-tests.outcome == 'failure'
+        # failure() function change the default behaviour of Github Actions: "if one steps fail, the next steps won't be executed"
+        if: failure() && steps.run-tests.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
           name: test-report
