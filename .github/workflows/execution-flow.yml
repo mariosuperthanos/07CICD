@@ -6,7 +6,7 @@ on:
       - master
 jobs:
   lint:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -21,7 +21,7 @@ jobs:
       - name: Lint code
         run: npm run lint
   test:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -45,7 +45,7 @@ jobs:
           path: test.json
   build:
     needs: test
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -67,7 +67,7 @@ jobs:
           path: dist
   deploy:
     needs: build
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Get build artifacts
         uses: actions/download-artifact@v3
